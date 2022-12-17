@@ -12,3 +12,29 @@ The client encrypt and send frames from his camera, using the socket and TLS pyt
 ```Python
 python -m pip install requirements.txt
 ```
+
+## Generates the certificate for TLS encryption
+
+Generates RSA certificates for encrypted communication between client and server:
+
+```Linux
+openssl genrsa -aes256 -out private.key 2048
+openssl rsa -in private.key -out private.key
+openssl req -new -x509 -nodes -sha1 -key private.key -out certificate.crt -days 36500
+```
+
+## How to start?
+
+To configure the client or server, run the following command and follow the wizard to configure the local server:
+
+Run the server:
+
+```Python
+python main.py runserver
+```
+
+Run the client:
+
+```Python
+python main.py app
+```
